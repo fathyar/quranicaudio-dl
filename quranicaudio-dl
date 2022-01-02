@@ -5,26 +5,23 @@
 #   Quran recitations from [QuranicAudio](https://quranicaudio.com/).
 #
 # Copyright (C) 2021 Fathy AR
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 
 PROGRAM_VERSION="0.1.0"
 BASE_URL="https://download.quranicaudio.com/quran"
 RECITATION=""
-
-
 
 # Exit if there is no parameters
 if [[ $# -eq 0 ]]; then
@@ -32,48 +29,48 @@ if [[ $# -eq 0 ]]; then
     echo "See '$0 -h' or '$0 --help' for usage info.";
     echo "Exiting.";
     exit 0
-fi 
+fi
 
 # Parse and check given arguments
 if [[ $# -gt 0 ]]; then
-  case "${1}" in
-    -h|--help )
-      echo "Usage:";
-      echo "-h, --help              Show this help and exit";
-      echo "--version               Print program version and exit";
-      echo;
-      echo "-r, --recitation NAME   Specify the recitation name";
-      exit 1
-      ;;
-    --version )
-      echo "quranicaudio-dl v${PROGRAM_VERSION}";
-      exit 1
-      ;;
-    -r|--recitation )
-      if [[ "${2}" != "" ]]; then
-        RECITATION="${2}"
-      else
-        echo "ERROR: Missing value for param '${1}'.";
-        echo "Exiting.";
-        exit 0
-      fi
-      ;;
-    *)
-      echo "ERROR: Unrecognized parameter '${1}'.";
-      echo "See '$0 -h' or '$0 --help' for usage info.";
-      echo "Exiting.";
-      exit 0
-      ;;
-  esac
+    case "${1}" in
+        -h|--help )
+            echo "Usage:";
+            echo "-h, --help              Show this help and exit";
+            echo "--version               Print program version and exit";
+            echo;
+            echo "-r, --recitation NAME   Specify the recitation name";
+            exit 1
+            ;;
+        --version )
+            echo "quranicaudio-dl v${PROGRAM_VERSION}";
+            exit 1
+            ;;
+        -r|--recitation )
+            if [[ "${2}" != "" ]]; then
+                RECITATION="${2}"
+            else
+                echo "ERROR: Missing value for param '${1}'.";
+                echo "Exiting.";
+                exit 0
+            fi
+            ;;
+        *)
+            echo "ERROR: Unrecognized parameter '${1}'.";
+            echo "See '$0 -h' or '$0 --help' for usage info.";
+            echo "Exiting.";
+            exit 0
+            ;;
+    esac
 fi
 
 download() {
-  FULL_URL=""
-  for i in {001..114}; do
-    FULL_URL="${BASE_URL}/${RECITATION}/${i}.mp3";
-    wget "${FULL_URL}";
-  done
-  exit 1
+    FULL_URL=""
+    for i in {001..114}; do
+        FULL_URL="${BASE_URL}/${RECITATION}/${i}.mp3";
+        wget "${FULL_URL}";
+    done
+    exit 1
 }
 
 download
