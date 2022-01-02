@@ -23,4 +23,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ## Author
 
-Copyright © 2021 Fathy AR
+Copyright © 2021–2022 Fathy AR
