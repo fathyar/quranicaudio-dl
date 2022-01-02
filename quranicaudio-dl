@@ -36,10 +36,10 @@ if [[ $# -gt 0 ]]; then
     case "${1}" in
         -h|--help )
             echo "Usage:";
-            echo "-h, --help              Show this help and exit";
-            echo "--version               Print program version and exit";
+            echo "-h, --help                Show this help and exit";
+            echo "--version                 Print program version and exit";
             echo;
-            echo "-r, --recitation NAME   Specify the recitation name";
+            echo "-r, --recitation <name>   Specify the recitation name";
             exit 1
             ;;
         --version )
